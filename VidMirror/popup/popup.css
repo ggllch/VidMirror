@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top right, #c4b5fd 0%, rgba(196, 181, 253, 0) 45%),
+    radial-gradient(circle at bottom left, #93c5fd 0%, rgba(147, 197, 253, 0) 42%),
+    linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
+  color: #0f172a;
+}
+
+.container {
+  width: 320px;
+  margin: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+}
+
+p {
+  margin: 12px 0 0;
+  line-height: 1.4;
+}
+
+.switchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.switchLabel {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.1px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #bfdbfe;
+  transition: 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.2s;
+}
+
+input:checked + .slider {
+  background: linear-gradient(90deg, #4f46e5 0%, #2563eb 100%);
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+.donateBlock {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.donateText {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #334155;
+}
+
+.donateButton {
+  display: inline-block;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  background: linear-gradient(90deg, #f97316 0%, #ef4444 100%);
+}
+
+.donateButton:hover {
+  filter: brightness(1.05);
+}

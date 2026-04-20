@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VidMirror</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>VidMirror</h1>
+      <div class="switchRow">
+        <span class="switchLabel">Отключено / Включено</span>
+        <label class="switch" for="enabledToggle">
+          <input id="enabledToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p id="status">Статус: отзеркалено</p>
+      <section class="donateBlock">
+        <p class="donateText">
+          Поддержите меня, если есть желание и возможность. Заранее спасибо
+        </p>
+        <a
+          class="donateButton"
+          href="https://www.donationalerts.com/r/11ch"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Donate
+        </a>
+      </section>
+    </main>
+    <script src="./popup.js"></script>
+  </body>
+</html>
