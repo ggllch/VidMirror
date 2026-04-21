@@ -30,17 +30,30 @@ async function ensureContentScript(tabId) {
       target: { tabId },
       files: ["content.js"]
     });
-    return true;
   } catch (_error) {
     return false;
   }
+
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId, allFrames: true },
+      files: ["content.js"]
+    });
+  } catch (_error) {
+    // Some embedded frames can be restricted; keep the main frame enabled.
+  }
+
+  return true;
 }
 
 async function sendStateToTab(tabId, enabled) {
   try {
-    await chrome.tabs.sendMessage(tabId, {
-      type: "VIDMIRROR_SET_ENABLED",
-      enabled
+    await chrome.scripting.executeScript({
+      target: { tabId, allFrames: true },
+      func: (nextEnabled) => {
+        globalThis.__VIDMIRROR_CONTROLLER__?.setEnabled(Boolean(nextEnabled));
+      },
+      args: [enabled]
     });
     return true;
   } catch (_error) {
