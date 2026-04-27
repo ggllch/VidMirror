@@ -1,4 +1,5 @@
 const enabledTabIds = new Set();
+const api = globalThis.browser ?? globalThis.chrome;
 
 function isSupportedUrl(url) {
   return typeof url === "string" && (url.startsWith("http://") || url.startsWith("https://"));
@@ -9,24 +10,24 @@ function applyBadge(tabId, enabled) {
     return;
   }
 
-  chrome.action.setBadgeText({ tabId, text: enabled ? "ON" : "OFF" });
-  chrome.action.setBadgeBackgroundColor({ tabId, color: enabled ? "#2563eb" : "#64748b" });
-  chrome.action.setTitle({
+  api.action.setBadgeText({ tabId, text: enabled ? "ON" : "OFF" });
+  api.action.setBadgeBackgroundColor({ tabId, color: enabled ? "#2563eb" : "#64748b" });
+  api.action.setTitle({
     tabId,
-    title: enabled ? "VidMirror: включено" : "VidMirror: выключено"
+    title: enabled ? "VidMirror: enabled" : "VidMirror: disabled"
   });
 }
 
 async function ensureContentScript(tabId) {
   try {
-    await chrome.tabs.sendMessage(tabId, { type: "VIDMIRROR_PING" });
+    await api.tabs.sendMessage(tabId, { type: "VIDMIRROR_PING" });
     return true;
   } catch (_error) {
     // Content script not injected yet.
   }
 
   try {
-    await chrome.scripting.executeScript({
+    await api.scripting.executeScript({
       target: { tabId },
       files: ["content.js"]
     });
@@ -35,7 +36,7 @@ async function ensureContentScript(tabId) {
   }
 
   try {
-    await chrome.scripting.executeScript({
+    await api.scripting.executeScript({
       target: { tabId, allFrames: true },
       files: ["content.js"]
     });
@@ -48,7 +49,7 @@ async function ensureContentScript(tabId) {
 
 async function sendStateToTab(tabId, enabled) {
   try {
-    await chrome.scripting.executeScript({
+    await api.scripting.executeScript({
       target: { tabId, allFrames: true },
       func: (nextEnabled) => {
         globalThis.__VIDMIRROR_CONTROLLER__?.setEnabled(Boolean(nextEnabled));
@@ -69,7 +70,7 @@ async function setTabEnabled(tabId, enabled) {
   if (enabled) {
     let tab;
     try {
-      tab = await chrome.tabs.get(tabId);
+      tab = await api.tabs.get(tabId);
     } catch (_error) {
       applyBadge(tabId, false);
       return;
@@ -104,17 +105,17 @@ async function disableAllTabs() {
   }
 }
 
-chrome.tabs.onActivated.addListener(({ tabId }) => {
+api.tabs.onActivated.addListener(({ tabId }) => {
   void disableAllTabs().then(() => {
     applyBadge(tabId, false);
   });
 });
 
-chrome.tabs.onRemoved.addListener((tabId) => {
+api.tabs.onRemoved.addListener((tabId) => {
   enabledTabIds.delete(tabId);
 });
 
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+api.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "VIDMIRROR_GET_TAB_STATE") {
     const tabId = Number(message.tabId);
     sendResponse({ enabled: enabledTabIds.has(tabId) });

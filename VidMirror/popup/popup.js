@@ -1,15 +1,27 @@
 const statusEl = document.getElementById("status");
+const statusHintEl = document.getElementById("statusHint");
 const enabledToggle = document.getElementById("enabledToggle");
+const api = globalThis.browser ?? globalThis.chrome;
 let activeTabId = null;
 
 function setStatus(enabled) {
-  statusEl.textContent = enabled
-    ? "Статус: отзеркалено"
-    : "Статус: не отзеркалено";
+  statusEl.classList.remove("is-enabled", "is-disabled", "is-error");
+  statusEl.textContent = enabled ? "Active" : "Inactive";
+  statusHintEl.textContent = enabled
+    ? "Mirroring is currently enabled."
+    : "Turn on the switch to mirror this tab.";
+  statusEl.classList.add(enabled ? "is-enabled" : "is-disabled");
+}
+
+function setErrorStatus(message) {
+  statusEl.classList.remove("is-enabled", "is-disabled", "is-error");
+  statusEl.textContent = "Error";
+  statusHintEl.textContent = message;
+  statusEl.classList.add("is-error");
 }
 
 async function getActiveTabId() {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const [tab] = await api.tabs.query({ active: true, currentWindow: true });
   if (!tab?.id) {
     throw new Error("No active tab");
   }
@@ -18,7 +30,7 @@ async function getActiveTabId() {
 
 async function loadState() {
   activeTabId = await getActiveTabId();
-  const data = await chrome.runtime.sendMessage({
+  const data = await api.runtime.sendMessage({
     type: "VIDMIRROR_GET_TAB_STATE",
     tabId: activeTabId
   });
@@ -29,13 +41,13 @@ async function loadState() {
 
 enabledToggle.addEventListener("change", async () => {
   if (!activeTabId) {
-    statusEl.textContent = "Ошибка: активная вкладка не найдена.";
+    setErrorStatus("Error: active tab was not found.");
     enabledToggle.checked = false;
     return;
   }
 
   const next = enabledToggle.checked;
-  const result = await chrome.runtime.sendMessage({
+  const result = await api.runtime.sendMessage({
     type: "VIDMIRROR_SET_TAB_STATE",
     tabId: activeTabId,
     enabled: next
@@ -47,5 +59,5 @@ enabledToggle.addEventListener("change", async () => {
 
 loadState().catch((error) => {
   console.error("Failed to load state", error);
-  statusEl.textContent = "Ошибка загрузки данных.";
+  setErrorStatus("Data loading error.");
 });

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,26 +9,30 @@
   <body>
     <main class="container">
       <h1>VidMirror</h1>
-      <div class="switchRow">
-        <span class="switchLabel">Отключено / Включено</span>
-        <label class="switch" for="enabledToggle">
-          <input id="enabledToggle" type="checkbox" />
-          <span class="slider"></span>
-        </label>
-      </div>
-      <p id="status">Статус: отзеркалено</p>
-      <section class="donateBlock">
-        <p class="donateText">
-          Поддержите меня, если есть желание и возможность. Заранее спасибо
-        </p>
-        <a
-          class="donateButton"
-          href="https://www.donationalerts.com/r/11ch"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Donate
-        </a>
+      <section class="controlPanel">
+        <div class="switchRow">
+          <span class="switchLabel">Mirror current tab</span>
+          <label class="switch" for="enabledToggle">
+            <input id="enabledToggle" type="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p id="status" class="statusBadge is-enabled">Active</p>
+        <p id="statusHint" class="statusHint">Mirroring is currently enabled.</p>
+      </section>
+      <section class="bottomBar">
+        <span class="versionLabel">1.03</span>
+        <div class="donateArea">
+          <span class="donateHint">Support me</span>
+          <a
+            class="donateButton"
+            href="https://www.donationalerts.com/r/11ch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Donate
+          </a>
+        </div>
       </section>
     </main>
     <script src="./popup.js"></script>

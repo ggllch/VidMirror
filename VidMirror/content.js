@@ -2,11 +2,13 @@
   if (globalThis.__VIDMIRROR_CONTROLLER__) {
     return;
   }
+  const api = globalThis.browser ?? globalThis.chrome;
 
   let isRunning = false;
   let observer = null;
   let rescanFrameId = null;
   let warmupFrameId = null;
+  let periodicRescanId = null;
   let warmupAttempts = 0;
 
   const MIRROR_ATTRIBUTE = "data-vidmirror-applied";
@@ -165,6 +167,10 @@
       cancelAnimationFrame(warmupFrameId);
       warmupFrameId = null;
     }
+    if (periodicRescanId !== null) {
+      clearInterval(periodicRescanId);
+      periodicRescanId = null;
+    }
 
     unmirrorVideos();
     isRunning = false;
@@ -184,8 +190,16 @@
     });
     observer.observe(document.documentElement, {
       childList: true,
-      subtree: true
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["style", "class"]
     });
+
+    periodicRescanId = setInterval(() => {
+      if (isRunning) {
+        mirrorVideos();
+      }
+    }, 1200);
   }
 
   function setEnabled(enabled) {
@@ -196,7 +210,7 @@
     }
   }
 
-  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  api.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message?.type === "VIDMIRROR_PING") {
       sendResponse({ ok: true });
       return;
