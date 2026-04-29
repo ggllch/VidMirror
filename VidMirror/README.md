@@ -8,17 +8,11 @@
 - Firefox: `browsers/firefox`
 - Opera: `browsers/opera`
 
-### Быстрый переход к версии
-
-- [Открыть папку Chrome](./browsers/chrome)
-- [Открыть папку Firefox](./browsers/firefox)
-- [Открыть папку Opera](./browsers/opera)
-
 ## Быстрое скачивание
 
-- Chrome ZIP: `downloads/VidMirror-chrome.zip`
-- Firefox ZIP: `downloads/VidMirror-firefox.zip`
-- Opera ZIP: `downloads/VidMirror-opera.zip`
+- [Скачать Chrome ZIP](./downloads/VidMirror-chrome.zip)
+- [Скачать Firefox ZIP](./downloads/VidMirror-firefox.zip)
+- [Скачать Opera ZIP](./downloads/VidMirror-opera.zip)
 
 После загрузки репозитория на GitHub файлы ZIP можно скачивать прямо с главной страницы через раздел `downloads`, а папки браузеров открывать отдельно в разделе `browsers`.
 
