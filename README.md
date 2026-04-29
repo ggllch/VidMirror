@@ -12,9 +12,7 @@
  - **Chrome:** `chrome://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/chrome`
  - **Firefox:** `about:debugging#/runtime/this-firefox` -> `Load Temporary Add-on` -> выбрать `browsers/firefox/manifest.json`
  - **Opera:** `opera://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/opera`
-3. Включить режим разработчика
-4. Нажать "Загрузить распакованное расширение" и выбрать папку с расширением
-5. Должно заработать
+3. Должно заработать
 
 1.3.1 - разделено на хром, мозилу, оперу и в дальнейшем добавятся еще.
 
