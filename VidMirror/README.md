@@ -1,22 +1,23 @@
 # VidMirror
 
-Базовый шаблон расширения для Google Chrome (Manifest V3).
+В репозитории есть отдельные версии расширения для каждого браузера.
 
-## Что внутри
+## Папки по браузерам
 
-- `manifest.json` — манифест расширения
-- `background.js` — фоновый service worker
-- `popup/popup.html` — интерфейс popup (опционально, сейчас не используется по клику)
-- `popup/popup.css` — стили popup
-- `popup/popup.js` — логика popup
+- Chrome: `browsers/chrome`
+- Firefox: `browsers/firefox`
+- Opera: `browsers/opera`
 
-## Как запустить
+## Быстрое скачивание
 
-1. Откройте `chrome://extensions`.
-2. Включите **Режим разработчика**.
-3. Нажмите **Load unpacked** / **Загрузить распакованное**.
-4. Выберите папку проекта `VidMirror`.
+- Chrome ZIP: `downloads/VidMirror-chrome.zip`
+- Firefox ZIP: `downloads/VidMirror-firefox.zip`
+- Opera ZIP: `downloads/VidMirror-opera.zip`
 
-После загрузки нажмите на иконку расширения рядом с адресной строкой:
-- один клик переключает состояние ON/OFF;
-- бейдж на иконке показывает текущее состояние.
+После загрузки репозитория на GitHub файлы ZIP можно скачивать прямо с главной страницы через раздел `downloads`, а папки браузеров открывать отдельно в разделе `browsers`.
+
+## Локальная установка (распакованная версия)
+
+- **Chrome:** `chrome://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/chrome`
+- **Firefox:** `about:debugging#/runtime/this-firefox` -> `Load Temporary Add-on` -> выбрать `browsers/firefox/manifest.json`
+- **Opera:** `opera://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/opera`
