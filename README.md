@@ -4,9 +4,10 @@
 
 Установка:
 1. Скачать папку с расширением:
-  - [Скачать Chrome ZIP](./downloads/VidMirror-chrome.zip)
-  - [Скачать Firefox ZIP](./downloads/VidMirror-firefox.zip)
-  - [Скачать Opera ZIP](./downloads/VidMirror-opera.zip)
+- [Скачать Chrome ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-chrome.zip)
+- [Скачать Firefox ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-firefox.zip)
+- [Скачать Opera ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-opera.zip)
+
 
 2. Перейти и выбрать:
  - **Chrome:** `chrome://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/chrome`
