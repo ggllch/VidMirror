@@ -8,6 +8,12 @@
 - Firefox: `browsers/firefox`
 - Opera: `browsers/opera`
 
+### Быстрый переход к версии
+
+- [Открыть папку Chrome](./browsers/chrome)
+- [Открыть папку Firefox](./browsers/firefox)
+- [Открыть папку Opera](./browsers/opera)
+
 ## Быстрое скачивание
 
 - Chrome ZIP: `downloads/VidMirror-chrome.zip`
