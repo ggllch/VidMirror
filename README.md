@@ -5,13 +5,12 @@
 Установка:
 1. Скачать папку с расширением:
 - [Скачать Chrome ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-chrome.zip)
-- [Скачать Firefox ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-firefox.zip)
+- [Скачать расширение для Firefox ](https://addons.mozilla.org/ru/firefox/addon/vidmirror/)
 - [Скачать Opera ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-opera.zip)
 
 
 2. Перейти и выбрать:
  - **Chrome:** `chrome://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/chrome`
- - **Firefox:** `about:debugging#/runtime/this-firefox` -> `Load Temporary Add-on` -> выбрать `browsers/firefox/manifest.json`
  - **Opera:** `opera://extensions` -> включить режим разработчика -> `Load unpacked` -> выбрать `browsers/opera`
 3. Должно заработать
 
