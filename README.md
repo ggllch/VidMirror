@@ -5,7 +5,7 @@
 Установка:
 1. Скачать папку с расширением:
 - [Скачать Chrome ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-chrome.zip)
-- [Скачать расширение для Firefox ](https://addons.mozilla.org/ru/firefox/addon/vidmirror/)
+- [Скачать расширение для Firefox через Add-ons ](https://addons.mozilla.org/ru/firefox/addon/vidmirror/)
 - [Скачать Opera ZIP](https://github.com/ggllch/VidMirror/raw/refs/heads/main/VidMirror/downloads/VidMirror-opera.zip)
 
 
